@@ -1,0 +1,41 @@
+% !TEX root = ../../main.tex
+%---------------------------------------------------------------------------------------------------
+\section{Decision problem}
+%---------------------------------------------------------------------------------------------------
+We study a decision problem in which the consequence $c \in \C$ of various alternative actions $a\in\mathcal{A}$ depend on the parameterization $\theta\in \Theta$ of an economic model. A consequence function $\rho: \A \times \Theta \mapsto \C$  details the consequence of action $a$ under parameters $\theta$:
+%
+\begin{align*}
+c = \rho(a, \theta).
+\end{align*}
+
+A decision-maker ranks consequences according to a utility function $u: \C \mapsto \R$ where higher values are more desirable. The structure of the decision problem $(\A, \theta, \C, \rho, u)$ is known, but there is uncertainty about the true parameterization $\theta_0$, i.e., the consequences of a particular action remain ambiguous. However, an observed sample of data $\psi \in \Psi$ provides a signal about the true parameters as $P_{\theta}$, the sampling distribution of $\psi$, differs by $\theta$.\\
+
+A statistical decision function $\delta: \Psi \mapsto \mathcal{A}$ is a procedure for determining an action for each possible realization of the sample. With as-if decision-making, the point estimates of the parameters $\hat{\theta}$ serve as a plug-in for the truth, ignoring their inherent uncertainty. This approach is just one particular example of a statistical decision function. We compare it against robust alternatives that explicitly account for the estimation uncertainty.\\
+
+Statistical decision theory provides the framework to compare the performance of alternative decision rules  $\delta \in \Gamma$. The utility achieved by $\delta$ is a random variable before the realization of $\psi$, and \citet{Wald.1950} suggests measuring performance for a given $\theta$ by its expected utility.
+%
+\begin{align*}
+  \E_{\theta}\left[u\left(\rho(\delta(\psi), \theta)\right)\right] = \int_\Psi u\left(\rho(\delta(\psi), \theta)\right) d P_{\theta}(\psi)
+\end{align*}
+%
+As the true parameterization is unknown, we need to aggregate the vector of expected utilities at each element in the parameter space.\\
+
+In general, there is no single decision rule that yields the highest expected utility for all possible parameterizations and so determining the best decision rule  $\delta^*$ is not straightforward. However, decision theory proposes various criteria \citep{Gilboa.2009,Marinacci.2015}. At the most fundamental level, any decision rule is admissible if another rule does not exist whose expected utility is always at least as high. In most cases, several decision functions are admissible, and additional optimality criteria are needed. We explore the common three: (1) maximin, (2) minimax regret, and (3) subjective Bayes.\\
+
+The maximin decision \citep{Gilboa.1989,Wald.1950} is determined by computing the minimum performance for each decision rule at all points in the parameter space and choosing the one with the highest worst-case performance. Stated concisely,
+%
+\begin{align*}
+\delta^*= \argmax_{\delta \in \Gamma } \min_{\theta\in \Theta} \E_{\theta}\left[u(\rho\left(\delta(\psi), \theta\right))\right].
+\end{align*}
+
+For the minimax regret criterion \citep{Manski.2004,Niehans.1948}, we compute the maximum regret for each decision rule at all points in the parameter space and chooses the decision rule that minimizes the maximum regret. The regret of choosing a decision rule for any realization of $\theta$ is the difference between the maximum possible performance where the true parameterization informs the decision and its actual performance. Thus, the minimax regret criterion solves:
+%
+\begin{align*}
+\delta^* =  \argmin_{\delta \in \Gamma } \max_{\theta\in \Theta}  \underbrace{\left[\max_{a \in \A}  u(\rho\left(a, \theta\right))  - \E_{\theta}\left[u(\rho\left(\delta(\psi), \theta\right)) \right]\right]}_{\text{regret}}.
+\end{align*}
+
+Maximization of the performance under subjective Bayes \citep{Savage.1954} requires a subjective probability distribution $f_{\theta}$ over the parameter space. Then the alternative with the highest expected subjective utility is selected:
+%
+\begin{align*}
+\delta^* = \argmax_{\delta \in \Gamma }  \int_{\theta} \E_{\theta}\left[u(\rho\left(\delta(\psi), \theta\right))\right]df_{\theta}.
+\end{align*}
