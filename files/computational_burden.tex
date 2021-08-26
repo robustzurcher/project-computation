@@ -1,0 +1,6 @@
+\section{Computational Challenges}
+The evaluation of statistical decision functions reveals several computational challenges and bottlenecks. This section tries to summarize challenges encountered so far in this research project.\\
+
+The most obvious challenge is the evaluation of the consequence function. In complex computational models, evaluation of the consequence function is time intensive and has high computational costs. The main focus is to reduce the number of evaluations of the consequence function. A second challenge in this context can be the convergence of the expectation at each point in the parameter space. Depending on the sample distribution this can also be time intensive.\\
+
+Depending on the statistical decision criteria, we want to use their implied structure, to reduce computational time. For example, using the maximin decision criteria, one can stop evaluating a statistical decision function at a particular point in the parameter space, if it's expectation converges to a clearly higher expected utility, compared to some other point.
