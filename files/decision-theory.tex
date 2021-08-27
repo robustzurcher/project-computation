@@ -12,28 +12,28 @@ A decision-maker ranks consequences according to a utility function $u: \C \maps
 
 A statistical decision function $\delta: \Psi \mapsto \mathcal{A}$ is a procedure for determining an action for each possible realization of the sample.
  % With as-if decision-making, the point estimates of the parameters $\hat{\theta}$ serve as a plug-in for the truth, ignoring their inherent uncertainty. This approach is just one particular example of a statistical decision function. We compare it against robust alternatives that explicitly account for the estimation uncertainty.\\
-Statistical decision theory provides the framework to compare the performance of alternative decision rules  $\delta \in \Gamma$. The utility achieved by $\delta$ is a random variable before the realization of $\psi$. However, \citet{Wald.1950} suggests measuring the performance of each $\delta$ at a possible true parametrization $\theta$ by computing the expected utility with respect to the induced sampling distribution.
+Statistical decision theory provides the framework to compare the performance of alternative decision functions  $\delta \in \Gamma$. The utility achieved by $\delta$ is a random variable before the realization of $\psi$. However, \citet{Wald.1950} suggests measuring the performance of each $\delta$ at a possible true parametrization $\theta$ by computing the expected utility with respect to the induced sampling distribution.
 %
 \begin{align*}
   \E_{\theta}\left[u\left(\rho(\delta(\psi), \theta)\right)\right] = \int_\Psi u\left(\rho(\delta(\psi), \theta)\right) d P_{\theta}(\psi)
 \end{align*}
 %
 
-In general, there is no single decision rule that yields the highest expected utility for all possible parameterizations and so determining the best decision rule  $\delta^*$ is not straightforward. However, decision theory proposes various criteria \citep{Gilboa.2009,Marinacci.2015}. At the most fundamental level, any decision rule is admissible if another rule does not exist whose expected utility is always at least as high. In most cases, several decision functions are admissible, and additional optimality criteria are needed. We explore the common three criteria: (1) maximin, (2) minimax regret, and (3) subjective Bayes.\\
+In general, there is no single decision function that yields the highest expected utility for all possible parameterizations and so determining the best decision function  $\delta^*$ is not straightforward. However, decision theory proposes various criteria \citep{Gilboa.2009,Marinacci.2015}, on how to aggregate the different expected utilities at each point. At the most fundamental level, any decision function is admissible if another function does not exist whose expected utility is always at least as high. In most cases, several decision functions are admissible, and additional optimality criteria are needed. We explore the common three criteria: (1) maximin, (2) minimax regret, and (3) subjective Bayes.\\
 
-The optimal decision rule, according to a maximin decision criteria \citep{Gilboa.1989,Wald.1950}, is determined by computing the minimum performance for each decision rule over all points in the parameter space and choosing the decision rule with the highest minimum performance. Stated concisely,
+The optimal decision function, according to a maximin decision criteria \citep{Gilboa.1989,Wald.1950}, is determined by selecting the minimum expected performance over all points in the parameter space and choosing the decision function with the highest minimum performance. Stated concisely,
 %
 \begin{align*}
 \delta^*= \argmax_{\delta \in \Gamma } \min_{\theta\in \Theta} \E_{\theta}\left[u(\rho\left(\delta(\psi), \theta\right))\right].
 \end{align*}
 
-For the minimax regret criterion \citep{Manski.2004,Niehans.1948}, we compute the regret for each decision rule at all possible points in the parameter space. The regret of choosing a decision rule for any realization of $\theta$ is the difference between the maximum possible performance where the true parameterization informs the decision and its actual performance. We then select over all points in the parameter space the maximum regret for each decision rule and choose the one with the lowest maximum regret Thus, the minimax regret criterion selects:
+For the minimax regret criterion \citep{Manski.2004,Niehans.1948}, we compute the regret for each decision function at all possible points in the parameter space. The regret of choosing a decision function for any realization of $\theta$ is the difference between the maximum possible performance where the true parameterization informs the decision and the functions actual expected performance. We then select over all points in the parameter space the maximum regret for each decision function and choose the one with the lowest maximum regret Thus, the minimax regret criterion selects:
 %
 \begin{align*}
 \delta^* =  \argmin_{\delta \in \Gamma } \max_{\theta\in \Theta}  \underbrace{\left[\max_{a \in \A}  u(\rho\left(a, \theta\right))  - \E_{\theta}\left[u(\rho\left(\delta(\psi), \theta\right)) \right]\right]}_{\text{regret}}.
 \end{align*}
 
-Subjective Bayes \citep{Savage.1954} requires a subjective probability distribution $f_{\theta}$ over the parameter space. Then the alternative with the decision rule with the highest expected subjective utility is selected:
+Subjective Bayes \citep{Savage.1954} requires a subjective probability distribution $f_{\theta}$ over the parameter space. Then the alternative with the decision function with the highest expected subjective utility is selected:
 %
 \begin{align*}
 \delta^* = \argmax_{\delta \in \Gamma }  \int_{\theta} \E_{\theta}\left[u(\rho\left(\delta(\psi), \theta\right))\right]df_{\theta}.
