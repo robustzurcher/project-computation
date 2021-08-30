@@ -12,4 +12,6 @@ main.pdf
 *.nav
 *.fdb_latexmk
 *.synctex.gz
-*.ipynb
+*.ipynb*
+.idea/
+
