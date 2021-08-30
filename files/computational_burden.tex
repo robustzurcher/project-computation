@@ -1,8 +1,25 @@
 \section{Computational Challenges}
 The evaluation of statistical decision functions reveals several computational challenges and bottlenecks. This section tries to summarize challenges encountered so far in this research project.\\
 
-The most obvious challenge is the evaluation of the consequence function. In complex computational models, evaluation of the consequence function is time intensive and has high computational costs. The main focus is to reduce the number of evaluations of the consequence function. A second challenge in this context can be the convergence of the expectation at each point in the parameter space. Depending on the sample distribution this can also be time intensive.\\
+The most obvious challenge is the evaluation of the consequence function. In complex computational models, evaluation of the consequence function is time intensive and has high computational costs. The main focus is to reduce the number of evaluations of the consequence function. A second challenge in this context can be the convergence of the expectation at each point in the parameter space.\\
 
-Depending on the statistical decision criteria, we want to use their implied structure, to reduce computational time. For example, using the maximin decision criteria, one can stop evaluating a statistical decision function at a particular point in the parameter space, if it's expectation converges to a clearly higher expected utility, compared to some other point. In the one dimensional parameter space of our urn example above, this seems quite trivial. In the following we generalize the urn example above to introduce a more complex and therefore realistic parameter space. The structure of the analysis remains the same.\\
+Depending on the statistical decision criteria, we want to use their implied structure, to reduce computational time. For example, using the maximin decision criteria, one can stop evaluating a statistical decision function at a particular point in the parameter space, if it's expectation converges to a clearly higher expected utility, compared to some other point. In the one dimensional parameter space of our urn example above, this seems quite trivial. We generalize the urn example above to introduce a more complex and therefore realistic parameter space. The structure of the analysis remains the same.\\
 
-Assume that in the 
+Assume that in the urn are white and colored balls. The colored balls are divided into groups of $K$ colors. After drawing $n$ balls, one needs to guess the $K$-dimensional share vector of the colored balls in the urn. The payoff is analogously defined to the one dimensional case and dependent on the guessed share $\tilde{\theta}$ and the true share $\theta_0$:
+\begin{align*}
+\rho(\tilde{\theta}, \theta_0) = 1 - \left\|\tilde{\theta} - \theta_0\right\|_K.
+\end{align*}
+The sampling distribution is the PMF of a multinominal distribution. The structure of the class of statistical decision functions evaluated, follows directly and is given by:
+\begin{align*}
+ \delta(r, \lambda) = \lambda\,\begin{bmatrix}
+           r_{1}/n \\
+           r_{2}/n \\
+           \vdots \\
+           r_{K}/n
+         \end{bmatrix}  + (1 - \lambda)\,\begin{bmatrix}
+                   1/2 \\
+                   1/2 \\
+                   \vdots \\
+                   1/2
+                 \end{bmatrix},\qquad\text{for some}\quad 0 \leq \lambda \leq 1.
+\end{align*}
