@@ -1,6 +1,6 @@
 % !TEX root = ../main.tex
 %---------------------------------------------------------------------------------------------------
-\section*{Decision problem}
+\section*{Statistical decision theory}
 %---------------------------------------------------------------------------------------------------
 We study a decision problem in which the consequence $c \in \C$ of various alternative actions $a\in\mathcal{A}$ depend on the parameterization $\theta\in \Theta$ of an economic model. A consequence function $\rho: \A \times \Theta \mapsto \C$  details the consequence of action $a$ under parameters $\theta$:
 %
@@ -35,3 +35,5 @@ Subjective Bayes \citep{Savage.1954} requires a subjective probability distribut
 \begin{align*}
 \delta^* = \argmax_{\delta \in \Gamma }  \int_{\theta} \E_{\theta}\left[u(\rho\left(\delta(\psi), \theta\right))\right]df_{\theta}.
 \end{align*}
+
+Determining $\delta^*$ according to, for example, the maximin criteria often poses considerable computational challenges. We can often only evaluate the consequence function $\rho(a, \theta)$ with a time-consuming simulation, we need to approximate the expectation numerically, and the dimensionality of $\theta$ can be high. The same challenges apply to a varying degree also to the other criteria as well.\\
