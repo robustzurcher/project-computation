@@ -45,14 +45,14 @@ Figure \ref{Measurement of performance} shows the expected payoff at different p
 \caption{Evaluating decision functions}\label{Measurement of performance}
 \end{figure}\FloatBarrier
 
-Figure \ref{Ranking of decision functions} ranks the two rules according to different decision-theoretic criteria. Both decision functions have their lowest expected payoff at $\theta = 0.5$. As the robust rule outperforms the as-if alternative at that point, the robust rule is preferred based on the maximin and minimax regret criteria. The maximin and minimax regret criteria are identical in this setting, as the payoff at the true proportion is constant across the parameter space.   Using the subjective Bayes criterion with a uniform prior, however, we select the as-if decision function as its better performance at the boundary of the parameter space is enough to offset its poor performance in the center.
+Figure \ref{Ranking of decision functions} ranks the two functions according to different decision-theoretic criteria. Both decision functions have their lowest expected payoff at $\theta = 0.5$. As the robust decision function outperforms the as-if alternative at that point, the robust decision function is preferred based on the maximin and minimax regret criteria. The maximin and minimax regret criteria are identical in this setting, as the payoff at the true proportion is constant across the parameter space.   Using the subjective Bayes criterion with a uniform prior, however, we select the as-if decision function as its better performance at the boundary of the parameter space is enough to offset its poor performance in the center.
 
 \begin{figure}[h!]\centering
 \scalebox{0.75}{\includegraphics{fig-example-urn-ranks-sw}}
 \caption{Ranking of decision functions}\label{Ranking of decision functions}
 \end{figure}\FloatBarrier
 
-Returning to the whole set of decision functions, we can construct the optimal rule for the alternative criteria by varying $\lambda$ to maximize the relevant performance measure. For example, Figure \ref{Optimality of decision functions for urn} shows the optimal level of $\lambda$ for the maximin and subjective Bayes criterion.
+Returning to the whole set of decision functions, we can construct the optimal decision function for the alternative criteria by varying $\lambda$ to maximize the relevant performance measure. For example, Figure \ref{Optimality of decision functions for urn} shows the optimal level of $\lambda$ for the maximin and subjective Bayes criterion.
 
 \begin{figure}[h!]\centering
 \scalebox{0.75}{\includegraphics{fig-example-urn-optimal-sw}}\vspace{-0.9cm}
@@ -66,7 +66,7 @@ Returning to the whole set of decision functions, we can construct the optimal r
 
 The as-if decision function $(\lambda=1.0)$ is not optimal under both criteria as at the optimum  $0.8 < \lambda^*_{\text{Maximin}} < \lambda^*_{\text{Bayes}} < 1$. The performance measure is more sensitive to the choice of $\lambda$ under the maximin criterion than subjective Bayes.\\
 
-In summary, the urn example illustrates the performance comparison of alternative decision functions over the whole parameter space of a model, and it shows how to construct optimal decision functions within a set of rules for alternative decision-theoretic criteria. Furthermore, it can be easily extended by considering an urn with more colors, which shares have to be guessed. This creates a complex and more realistic parameter space and allows to scale the problem to demonstrate any computational methods, which could reduce computational time using the structure of the analysis.\\
+In summary, the urn example illustrates the performance comparison of alternative decision functions over the whole parameter space of a model, and it shows how to construct optimal decision functions within a set of decision functions for alternative decision-theoretic criteria. Furthermore, it can be easily extended by considering an urn with more colors, which shares have to be guessed. This creates a complex and more realistic parameter space and allows to scale the problem to demonstrate any computational methods, which could reduce computational time using the structure of the analysis.\\
 
 We provide a flexible implementation of this extension in Python at:
 
