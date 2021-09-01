@@ -30,14 +30,14 @@ The empirical proportion of black balls in the sample $r / n$ provides the point
 
 We later determine the best decision function within this class, but we start by comparing the performance of the two decision functions with $\lambda = 1$ and $\lambda = 0.9$. We refer to the former as the as-if decision function (ADF) as it announces the point estimate as-if it is the true one and $\lambda=0.9$ as the robust decision function (RDF) for reasons that will become clear later. We evaluate their relative performance by aggregating the vector of expected payoffs over the unit interval using the different decision-theoretic criteria. We assume a linear utility function and thus directly refer to the monetary consequences of a guess as its payoff. Throughout, we set the number of draws $n$ to  $50$.\\
 
-Figure \ref{Calculation of expected payoff} shows the sampling distribution of the number of black balls $R$, the associated payoff for each possible draw, and the two decision functions. The true but unknown share in this example is $40\%$, i.e. $\theta = 0.4$. The robust decision function outperforms the as-if function for realizations of the point estimate smaller than its true value due to the shift towards $0.5$. At the same time, the as-if function leads to a higher payoff at the center of the distribution.\\
+Figure \ref{Calculation of expected payoff} shows the sampling distribution of the number of black balls $R$, the associated payoff for each possible draw, and the two decision functions. The true but unknown share in this example is $40\%$, i.e. $\theta = 0.4$. The RDF outperforms the ADF for realizations of the point estimate smaller than its true value due to the shift towards $0.5$. At the same time, the ADF leads to a higher payoff at the center of the distribution.\\
 
 \begin{figure}[h!]\centering
 \scalebox{0.75}{\includegraphics{fig-example-urn-expected-payoff-sw}}
 \caption{Calculating the expected payoff}\label{Calculation of expected payoff}
 \end{figure}\FloatBarrier
 
-Figure \ref{Measurement of performance} shows the expected payoff at different points in the parameter space. On the left, we show the expected payoff at two selected points. While the as-if decision function performs better than the robust function at $\theta = 0.1$, the opposite is true at $\theta = 0.4$. Thus, both decision functions are admissible as neither of the two outperforms the other for all possible true proportions. On the right, we trace out the expected payoff of both functions over the whole parameter space. The robust decision function outperforms the as-if function in the center of the parameter space but performs worse at the boundary. Overall, the performance of the robust decision function is more balanced across the whole parameter space, which motivates its name.
+Figure \ref{Measurement of performance} shows the expected payoff at different points in the parameter space. On the left, we show the expected payoff at two selected points. While the ADF performs better than the RDF at $\theta = 0.1$, the opposite is true at $\theta = 0.4$. Thus, both decision functions are admissible as neither of the two outperforms the other for all possible true proportions. On the right, we trace out the expected payoff of both functions over the whole parameter space. The RDF outperforms the ADF in the center of the parameter space but performs worse at the boundary. Overall, the performance of the RDF is more balanced across the whole parameter space, which motivates its name.
 
 \begin{figure}[h!]\centering
 \subfloat[Expected payoff]{\scalebox{0.50}{\includegraphics{fig-example-urn-exp-payoff-two-points-sw}}}\hspace{0.3cm}
@@ -45,7 +45,7 @@ Figure \ref{Measurement of performance} shows the expected payoff at different p
 \caption{Evaluating decision functions}\label{Measurement of performance}
 \end{figure}\FloatBarrier
 
-Figure \ref{Ranking of decision functions} ranks the two functions according to different decision-theoretic criteria. Both decision functions have their lowest expected payoff at $\theta = 0.5$. As the robust decision function outperforms the as-if alternative at that point, the robust decision function is preferred based on the maximin and minimax regret criteria. The maximin and minimax regret criteria are identical in this setting, as the payoff at the true proportion is constant across the parameter space.   Using the subjective Bayes criterion with a uniform prior, however, we select the as-if decision function as its better performance at the boundary of the parameter space is enough to offset its poor performance in the center.
+Figure \ref{Ranking of decision functions} ranks the two functions according to different decision-theoretic criteria. Both decision functions have their lowest expected payoff at $\theta = 0.5$. As the RDF outperforms the ADF alternative at that point, the RDF is preferred based on the maximin and minimax regret criteria. The maximin and minimax regret criteria are identical in this setting, as the payoff at the true proportion is constant across the parameter space. Using the subjective Bayes criterion with a uniform prior, however, we select the ADF as its better performance at the boundary of the parameter space is enough to offset its poor performance in the center.
 
 \begin{figure}[h!]\centering
 \scalebox{0.75}{\includegraphics{fig-example-urn-ranks-sw}}
@@ -64,12 +64,14 @@ Returning to the whole set of decision functions, we can construct the optimal d
 \caption{Optimality of decision functions}\label{Optimality of decision functions for urn}
 \end{figure}\FloatBarrier
 
-The as-if decision function $(\lambda=1.0)$ is not optimal under both criteria as at the optimum  $0.8 < \lambda^*_{\text{Maximin}} < \lambda^*_{\text{Bayes}} < 1$. The performance measure is more sensitive to the choice of $\lambda$ under the maximin criterion than subjective Bayes.\\
+The ADF $(\lambda=1.0)$ is not optimal under both criteria as at the optimum  $0.8 < \lambda^*_{\text{Maximin}} < \lambda^*_{\text{Bayes}} < 1$. The performance measure is more sensitive to the choice of $\lambda$ under the maximin criterion than subjective Bayes.\\
 
-In summary, the urn example illustrates the performance comparison of alternative decision functions over the whole parameter space of a model, and it shows how to construct optimal decision functions within a set of decision functions for alternative decision-theoretic criteria. Furthermore, it can be easily extended by considering an urn with more colors, which shares have to be guessed. This creates a complex and more realistic parameter space and allows to scale the problem to demonstrate computational methods, which could reduce computational time using the structure of the analysis.\\
+In summary, the urn example illustrates the performance comparison of alternative decision functions over the whole parameter space of a model. Furthermore, it shows how to construct optimal decision functions within a set of decision functions for alternative decision-theoretic criteria.\\
 
-We provide a flexible implementation of this extension in Python at:
+We can easily extend this example by considering an urn with balls of many different colors, and we provide a flexible implementation of this extended example in Python at:
 
 \begin{center}
 \href{https://github.com/robustzurcher/project-computation/blob/master/implementation.py}{https://github.com/robustzurcher/project-computation/blob/master/urn\_example.py}
 \end{center}
+
+This setup provides a computational sandbox that allows us to scale the dimensionality of the parameter space and illustrate how the use of advanced computational methods reduces the overall computational burden of a decision-theoretic analysis.
