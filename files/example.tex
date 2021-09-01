@@ -1,8 +1,8 @@
-% !TEX root = ../../main.tex
+% !TEX root = ../main.tex
 %---------------------------------------------------------------------------------------------------
-\section{Urn example}
+\section*{Urn example}
 %---------------------------------------------------------------------------------------------------
-We now illustrate the key ideas of evaluating statistical decision functions with an urn example. As in our empirical application \citep{Blesch.2021}, we study a set of decision functions. We first compare the performance of two distinct rules and then determine the optimal rule within the set.\\
+We now illustrate the key ideas of evaluating statistical decision functions with an urn example. We study a set of decision functions and first compare the performance of two distinct rules before determining the optimal rule within the whole set.\\
 
 We consider an urn with black $b$ and white $w$ balls where the true proportion of black balls $\theta_0$ is unknown. In this example, the action constitutes a guess $\tilde{\theta}$ about $\theta_0$ after drawing a fixed number of $n$ balls at random with replacement. The parameter and action space both correspond to the unit interval $\Theta = \A = [0, 1]$. \\
 
@@ -30,7 +30,7 @@ The empirical proportion of black balls in the sample $r / n$ provides the point
 
 We later determine the best decision function within this class, but we start by comparing the performance of the two decision functions with $\lambda = 1$ and $\lambda = 0.9$. We refer to the former as the as-if decision function as it announces the point estimate as-if it is the true one and $\lambda=0.9$ as the robust decision function for reasons that will become clear later. We evaluate their relative performance by aggregating the vector of expected payoffs over the unit interval using the different decision-theoretic criteria. We assume a linear utility function and thus directly refer to the monetary consequences of a guess as its payoff. Throughout, we set the number of draws $n$ to  $50$.\\
 
-Figure \ref{Calculation of expected payoff} shows the sampling distribution of the number of black balls $R$ and the associated payoff for each possible draw and the two decision functions. The true but unknown share in this example is $40\%$, i.e. $\theta = 0.4$. The robust decision function outperforms the as-if rule for realizations of the point estimate smaller than its true value due to the shift towards $0.5$. At the same time, the as-if rule leads to a higher payoff at the center of the distribution.\\
+Figure \ref{Calculation of expected payoff} shows the sampling distribution of the number of black balls $R$, the associated payoff for each possible draw, and the two decision functions. The true but unknown share in this example is $40\%$, i.e. $\theta = 0.4$. The robust decision function outperforms the as-if rule for realizations of the point estimate smaller than its true value due to the shift towards $0.5$. At the same time, the as-if rule leads to a higher payoff at the center of the distribution.\\
 
 \begin{figure}[h!]\centering
 \scalebox{0.75}{\includegraphics{fig-example-urn-expected-payoff}}
@@ -66,4 +66,10 @@ Returning to the whole set of decision functions, we can construct the optimal r
 
 The as-if decision function $(\lambda=1.0)$ is not optimal under both criteria as at the optimum  $0.8 < \lambda^*_{\text{Maximin}} < \lambda^*_{\text{Bayes}} < 1$. The performance measure is more sensitive to the choice of $\lambda$ under the maximin criterion than subjective Bayes.\\
 
-In summary, the urn example illustrates the performance comparison of alternative decision functions over the whole parameter space of a model, and it shows how to construct optimal decision functions within a set of rules for alternative decision-theoretic criteria. Next, we move to the more involved setting of a sequential dynamic decision problem with ambiguous transitions and explore a class of statistical decision functions frequently used in the operations research literature.
+In summary, the urn example illustrates the performance comparison of alternative decision functions over the whole parameter space of a model, and it shows how to construct optimal decision functions within a set of rules for alternative decision-theoretic criteria.\\
+
+We provide a scalable implementation of this example in Python at:
+
+\begin{center}
+\href{https://github.com/robustzurcher/project-computation/blob/master/implementation.py}{https://github.com/robustzurcher/project-computation/blob/master/urn\_example.py}
+\end{center}
